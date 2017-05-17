@@ -1,0 +1,217 @@
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: #ebebeb;
+}
+
+h2 {
+  font-family: Consolas, Monaco ,'Andale Mono', monospace;
+  margin: 0.2em 30px;
+  font-size: 2em;
+}
+
+div#html, div#pug {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 50vw;
+  float: left;
+  border: 0px solid #999;
+  box-sizing: border-box;
+}
+
+div#html {
+  border-right-width: 1px;
+}
+
+div#pug {
+  border-left-width: 1px;
+  position: relative;
+}
+
+.CodeMirror {
+  height: 100%;
+}
+
+.settings-toggle, .options-container {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 6;
+}
+
+.settings-toggle, label {
+  cursor: pointer;
+}
+
+.settings-toggle {
+  opacity: 0.5;
+  transition: opacity .15s ease-in-out;
+}
+
+.settings-toggle:hover {
+  opacity: 1;
+}
+
+.options-container {
+  visibility: hidden;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+  padding: 8px;
+  background: #fff;
+  border-radius: 2px;
+  font-family: "Roboto";
+  transition: transform .15s ease-in-out, visibility 0s .15s;
+  transform: scale(0);
+  transform-origin: top right;
+}
+
+#settings-open:checked ~ .options-container {
+  visibility: visible;
+  transform: scale(1);
+  transition: transform .15s ease-in-out, visibility 0s 0s;
+}
+
+.options-container-background {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  cursor: default;
+}
+
+#settings-open {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#settings-open:checked ~ .options-container-background {
+  display: block;
+}
+
+.settings-toggle .material-icons {
+  font-size: 24px;
+}
+
+.material-icons.checkbox {
+  font-size: 16px;
+  margin-right: 4px;
+}
+
+.material-icons.checkbox::before {
+  content: "check_box_outline_blank";
+}
+
+input[type="checkbox"]:checked + .material-icons.checkbox::before {
+  content: "check_box";
+  color: #7a178b;
+}
+
+.options-container input[type="checkbox"] {
+  visibility: hidden;
+  display: block;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.options-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+select {
+  width: 100%;
+}
+
+.options-container > *:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.copy {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 4;
+  border-radius: 2px 0 0 0;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+  height: 40px;
+  padding: 0 24px;
+  border: 0;
+  background: #9D1DB3;
+  color: #fff;
+  font-size: 18px;
+  font-family: "Roboto";
+  cursor: pointer;
+  outline: 0;
+}
+
+.copy:active {
+  background: #7a178b;
+}
+
+.snackbar {
+  background: #303030;
+  position: absolute;
+  bottom: 14px;
+  left: 24px;
+  padding: 0 24px;
+  height: 48px;
+  color: #fff;
+  font-family: "Roboto";
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+  line-height: 48px;
+  z-index: 5;
+  transform: translateX(calc(-100% - 24px));
+  transition: transform .15s ease-in-out, visibility 0s .2s;
+  cursor: pointer;
+  min-width: 288px;
+  visibility: hidden;
+}
+
+.snackbar.snackbar--active {
+  transform: translate(0, 0);
+  visibility: visible;
+  transition: transform .15s ease-in-out, visibility 0s 0s;
+}
+
+a {
+  text-decoration: none;
+  color: #9D1DB3;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+@media ( max-width: 650px ) {
+  div#html, div#pug {
+    height: 50vh;
+    width: 100vw;
+    border-width: 0;
+  }
+
+  div#html {
+    border-bottom-width: 1px;
+  }
+
+  div#pug {
+    border-top-width: 1px;
+  }
+
+  .snackbar {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    min-width: 0;
+    transform: translateY(100%);
+  }
+}

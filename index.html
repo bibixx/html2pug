@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>HTML to PugJS converter</title>
+    <link rel="stylesheet" href="./lib/codemirror.css">
+    <link rel="stylesheet" href="./theme/material-mdl.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <div id="options">
+      <label for="settings-open" class="options-btn settings-toggle"><i class="material-icons">settings</i></label>
+      <input type="checkbox" id="settings-open">
+      <div class="options-container">
+        <label class="options-checkbox"><input type="checkbox" id="quotes" checked><i class="material-icons checkbox"></i>Double quotes</label>
+        <select id="tab-size">
+          <option>2 spaces</option>
+          <option>4 spaces</option>
+          <option>tab</option>
+        </select>
+        <small>Created by <a href="http://legiec.eu" target="_blank">bibixx</a></small>
+      </div>
+      <label for="settings-open" class="options-container-background"></label>
+    </div>
+
+    <div id="html">
+      <h2>HTML</h2>
+    </div>
+    <div id="pug">
+      <h2>PugJS</h2>
+      <button class="copy">Copy to clipboard</button>
+    </div>
+
+    <div class="snackbar">Copied to clipboard</div>
+    <script src="./lib/codemirror.js"></script>
+    <script src="./addon/selection/active-line.js"></script>
+
+    <script src="./mode/javascript/javascript.js"></script>
+    <script src="./mode/css/css.js"></script>
+    <script src="./mode/xml/xml.js"></script>
+    <script src="./mode/htmlmixed/htmlmixed.js"></script>
+    <script src="./mode/pug/pug.js"></script>
+
+    <script src="./js/html2pug.js" charset="utf-8"></script>
+    <script src="./js/clipboard.min.js" charset="utf-8"></script>
+    <script src="./js/script.js" charset="utf-8"></script>
+  </body>
+</html>
